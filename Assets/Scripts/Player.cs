@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _jumpForce = 5;
     private float _playerInputh;
     //private float _playerInputv;
-    private GroundSensor _sensor;
+    //private GroundSensor _sensor;
     private Rigidbody2D _rBody2D;
     private Animator _animator;
     
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         _rBody2D = GetComponent<Rigidbody2D>();
-        _sensor = GetComponentInChildren<GroundSensor>();
+        //_sensor = GetComponentInChildren<GroundSensor>();
         _animator = GetComponentInChildren<Animator>();
     }
 
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     {
         Movement();
 
-        if(Input.GetButtonDown("Jump") && _sensor._isGrounded)
+        if(Input.GetButtonDown("Jump") && GroundSensor._isGrounded)
         {
             Jump();
         }
