@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Player : MonoBehaviour
 {
@@ -11,16 +12,17 @@ public class Player : MonoBehaviour
     [SerializeField] private float _jumpForce = 5;
     private float _playerInputh;
     //private float _playerInputv;
-    //private GroundSensor _sensor;
+    private GroundSensor _sensor;
     private Rigidbody2D _rBody2D;
-    private Animator _animator;
+    [SerializeField] private Animator _animator;
+    bool facingRight = true;
+    [SerializeField] private PlayableDirector _director;
     
     // Start is called before the first frame update
     void Start()
     {
         _rBody2D = GetComponent<Rigidbody2D>();
-        //_sensor = GetComponentInChildren<GroundSensor>();
-        _animator = GetComponentInChildren<Animator>();
+        _sensor = GetComponentInChildren<GroundSensor>();
     }
 
 
@@ -30,9 +32,24 @@ public class Player : MonoBehaviour
     {
         Movement();
 
-        if(Input.GetButtonDown("Jump") && GroundSensor._isGrounded)
+        if(Input.GetButtonDown("Jump") && _sensor._isGrounded)
         {
             Jump();
+        }
+
+        if(Input.GetButtonDown("Fire2"))
+        {
+            _director.Play();
+        }
+
+        if(_playerInputh > 0 && !facingRight)
+        {
+            Flip();
+        }
+
+        else if(_playerInputh < 0 && !facingRight)
+        {
+            Flip();
         }
     }
 
@@ -72,5 +89,16 @@ public class Player : MonoBehaviour
         {
             _animator.SetBool("isJumping", false);
         }
+    }
+
+    void Flip()
+    {
+        Vector3 currentScale = gameObject.transform.localScale;
+        
+        currentScale.x *= -1;
+
+        gameObject.transform.localScale = currentScale;
+
+        facingRight = !facingRight;
     }
 }
