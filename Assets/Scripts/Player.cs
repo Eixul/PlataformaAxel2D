@@ -17,12 +17,13 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator _animator;
     bool facingRight = true;
     [SerializeField] private PlayableDirector _director;
-    
+    private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
         _rBody2D = GetComponent<Rigidbody2D>();
         _sensor = GetComponentInChildren<GroundSensor>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
 
@@ -40,16 +41,6 @@ public class Player : MonoBehaviour
         if(Input.GetButtonDown("Fire2"))
         {
             _director.Play();
-        }
-
-        if(_playerInputh > 0 && !facingRight)
-        {
-            Flip();
-        }
-
-        else if(_playerInputh < 0 && !facingRight)
-        {
-            Flip();
         }
     }
 
@@ -75,6 +66,16 @@ public class Player : MonoBehaviour
         }
         /*_playerInputv = Input.GetAxis("Vertical");
         transform.Translate(new Vector2(_playerInputh, _playerInputv) * _playerSpeed * Time.deltaTime);*/
+
+        if (_playerInputh < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+
+        else if (_playerInputh > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
     }
 
     void Jump()
@@ -91,14 +92,4 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Flip()
-    {
-        Vector3 currentScale = gameObject.transform.localScale;
-        
-        currentScale.x *= -1;
-
-        gameObject.transform.localScale = currentScale;
-
-        facingRight = !facingRight;
-    }
 }
