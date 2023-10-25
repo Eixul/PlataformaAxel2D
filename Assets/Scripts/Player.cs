@@ -18,12 +18,15 @@ public class Player : MonoBehaviour
     bool facingRight = true;
     [SerializeField] private PlayableDirector _director;
     private SpriteRenderer spriteRenderer;
+    
     // Start is called before the first frame update
     void Start()
     {
         _rBody2D = GetComponent<Rigidbody2D>();
         _sensor = GetComponentInChildren<GroundSensor>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        Debug.Log(GameManager.instance.vidas);
     }
 
 
@@ -90,6 +93,16 @@ public class Player : MonoBehaviour
         {
             _animator.SetBool("isJumping", false);
         }
+        
     }
 
+    void OnTriggerExit2D(Collider2D other)
+    {
+        GameManager.instance.GameOver();
+        if(other.gameObject.layer == 6)
+        {
+            SoundManager.instance.DeathSound();
+        }
+
+    }
 }
