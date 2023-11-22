@@ -18,6 +18,11 @@ public class Player : MonoBehaviour
     bool facingRight = true;
     [SerializeField] private PlayableDirector _director;
     private SpriteRenderer spriteRenderer;
+
+    public SoundManager soundManager;
+
+    int _counterEstrellas;
+    private StarCollect estrella;
     
     // Start is called before the first frame update
     void Start()
@@ -25,6 +30,8 @@ public class Player : MonoBehaviour
         _rBody2D = GetComponent<Rigidbody2D>();
         _sensor = GetComponentInChildren<GroundSensor>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
         Debug.Log(GameManager.instance.vidas);
     }
@@ -45,6 +52,8 @@ public class Player : MonoBehaviour
         {
             _director.Play();
         }
+
+
     }
 
     void FixedUpdate()
@@ -88,11 +97,14 @@ public class Player : MonoBehaviour
         if(_playerInputh != 0)
         {
             _animator.SetBool("isJumping", true);
+            soundManager.JumpSound();
         }
         if(_playerInputh == 0)
         {
             _animator.SetBool("isJumping", false);
         }
+
+
         
     }
 
@@ -104,5 +116,18 @@ public class Player : MonoBehaviour
             SoundManager.instance.DeathSound();
         }
 
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "StarColl")
+        {
+            StarCollect estrella = collision.gameObject.GetComponent<StarCollect>();
+            estrella.Coger();
+            _counterEstrellas++;
+            Debug.Log(_counterEstrellas);
+            //contador.text = "Coiners" + _counterEstrellas;
+        }
+        
     }
 }

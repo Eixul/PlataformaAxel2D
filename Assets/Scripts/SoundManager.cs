@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     AudioSource _sfxAudio;
     [SerializeField]private AudioClip deathSound;
     [SerializeField]private AudioClip jumpSound;
+    [SerializeField]private AudioClip bgmMusic;
     
     // Start is called before the first frame update
     void Awake()
