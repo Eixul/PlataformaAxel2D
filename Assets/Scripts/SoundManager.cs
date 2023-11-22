@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField]private AudioClip deathSound;
     [SerializeField]private AudioClip jumpSound;
     [SerializeField]private AudioClip bgmMusic;
+    [SerializeField]private AudioClip estrellitaSFX;
     
     // Start is called before the first frame update
     void Awake()
@@ -40,5 +41,10 @@ public class SoundManager : MonoBehaviour
     public void JumpSound()
     {
         _sfxAudio.PlayOneShot(jumpSound);
+    }
+
+    public void StarColeccion()
+    {
+        _sfxAudio.PlayOneShot(estrellitaSFX);
     }
 }

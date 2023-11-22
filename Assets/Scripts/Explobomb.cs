@@ -18,6 +18,17 @@ public class Explobomb : MonoBehaviour
     
     public void Explosion()
     {
+        Collider2D[] initialObjetos = Physics2D.OverlapCircleAll(transform.position, radio);
+
+        foreach(Collider2D collider in initialObjetos)
+        {
+            Player player = collider.GetComponent<Player>();
+            if (player != null)
+            {
+                player.Death();
+            }
+        }
+        
         Collider2D[] objetos = Physics2D.OverlapCircleAll(transform.position, radio);
 
         foreach(Collider2D collider in objetos)

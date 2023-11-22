@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Player : MonoBehaviour
     bool facingRight = true;
     [SerializeField] private PlayableDirector _director;
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private int health;
+    [SerializeField] private int numDeVidas;
 
     public SoundManager soundManager;
 
@@ -129,5 +132,10 @@ public class Player : MonoBehaviour
             //contador.text = "Coiners" + _counterEstrellas;
         }
         
+    }
+
+    public void Death()
+    {
+        Destroy(gameObject);
     }
 }

@@ -213,6 +213,8 @@ MonoBehaviour:
   _jumpForce: 5
   _animator: {fileID: 1404796624}
   _director: {fileID: 1838345706}
+  health: 3
+  numDeVidas: 3
   soundManager: {fileID: 0}
 --- !u!50 &67748525
 Rigidbody2D:
@@ -581,6 +583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 295551122}
   - component: {fileID: 295551121}
+  - component: {fileID: 295551123}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -643,6 +646,23 @@ Transform:
   - {fileID: 97654694}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &295551123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295551120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 1993882854}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
 --- !u!4 &415294875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2639724736412581743, guid: e2fdd898d509a854eae37b5401e19391, type: 3}
@@ -7968,37 +7988,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &584416522
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 584416523}
-  m_Layer: 0
-  m_Name: Bombos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &584416523
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584416522}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.788107, y: 1.0353029, z: -0.06238473}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &592877736
 GameObject:
   m_ObjectHideFlags: 3
@@ -8151,6 +8140,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 995183036}
+  - {fileID: 1839191967}
   m_Father: {fileID: 681917550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -8957,6 +8947,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 063cb188f1cd43d40b62e854ef21534e, type: 3}
   jumpSound: {fileID: 8300000, guid: 9a03e4dbb357d3446a18b8aa49d1eea0, type: 3}
   bgmMusic: {fileID: 0}
+  estrellitaSFX: {fileID: 0}
 --- !u!4 &1107397007
 Transform:
   m_ObjectHideFlags: 0
@@ -9831,7 +9822,6 @@ Transform:
   m_Children:
   - {fileID: 1117860669}
   - {fileID: 1508667392}
-  - {fileID: 1839191967}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1563399776
@@ -10122,14 +10112,14 @@ Transform:
   m_GameObject: {fileID: 1839191966}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.92, y: 2.24, z: 10}
+  m_LocalPosition: {x: -974.0221, y: -538.4418, z: 2.8591094}
   m_LocalScale: {x: 1.8839, y: 1.8839, z: 1.8839}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1928069229}
   - {fileID: 1424606495}
   - {fileID: 1554083559}
-  m_Father: {fileID: 1563399775}
+  m_Father: {fileID: 683937949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1862951558
 GameObject:
@@ -10519,7 +10509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d784291b4074f44adff69772616c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radio: 0.5
+  radio: 0.35
   fuerzaExplosion: 500
 --- !u!50 &2022351106
 Rigidbody2D:
@@ -10707,5 +10697,4 @@ SceneRoots:
   - {fileID: 428336276}
   - {fileID: 681917550}
   - {fileID: 748948776}
-  - {fileID: 584416523}
   - {fileID: 2022351109}
